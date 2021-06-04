@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -16,7 +17,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new FaviconsWebpackPlugin({
+            logo: './favicon.ico', // svg works too!
+            mode: 'webapp', // optional can be 'webapp', 'light' or 'auto' - 'auto' by default
+            devMode: 'webapp', // optional can be 'webapp' or 'light' - 'light' by default 
+            favicons: {
+                appName: 'Weather App',
+                appDescription: 'My awesome App',
+                developerName: 'Me',
+                developerURL: null, // prevent retrieving from the nearest package.json
+                icons: {
+                    coast: false,
+                    yandex: false
+                }
+            }
+        })
     ],
 
     module: {
