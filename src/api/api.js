@@ -17,6 +17,10 @@ class api {
     getOneDayWeather(city) {
         return this.getResource(`weather?q=${city}&appid=${KEYS.API_KEY}`);
     }
+
+    getSomeDaysWeather(city, days) {
+        return this.getResource(`forecast/daily?q=${city}&cnt=${days}&appid=${KEYS.API_KEY}`);
+    }
 }
 
 export default new api();
