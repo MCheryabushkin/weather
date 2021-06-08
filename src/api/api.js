@@ -14,12 +14,16 @@ class api {
         return await res.json();
     }
 
-    getOneDayWeather(city) {
+    async getOneDayWeather(city) {
         return this.getResource(`weather?q=${city}&appid=${KEYS.API_KEY}`);
     }
 
-    getSomeDaysWeather(city, days) {
-        return this.getResource(`forecast/daily?q=${city}&cnt=${days}&appid=${KEYS.API_KEY}`);
+    async get7DaysForecast(lat, lon) {
+        return this.getResource(`onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${KEYS.API_KEY}`);
+    }
+
+    getImgUrl(icon) {
+        return `http://openweathermap.org/img/wn/${icon}@2x.png`;
     }
 }
 

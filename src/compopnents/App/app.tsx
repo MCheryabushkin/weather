@@ -1,5 +1,6 @@
 import React from "react";
 import api from "../../api/api";
+import ForecastList from "../Forecast/forecast";
 import Header from "../Header";
 import Weather from "../Weather/weather";
 
@@ -51,6 +52,7 @@ class App extends React.Component<{}, IState> {
                     name={this.city}
                     changeCity={this.changeCity} />
                 <Weather data={data} />
+                <ForecastList coord={data.coord} />
 
                 <pre>
                     {JSON.stringify(this.state.data, undefined, 2)}

@@ -53,3 +53,8 @@ html, body {
     padding: 0;
     font-family: "Open Sans", sans-serif;
 }
+
+p {
+    margin: 0;
+    padding: 0;
+}
