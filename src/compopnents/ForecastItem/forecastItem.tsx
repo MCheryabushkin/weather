@@ -9,13 +9,13 @@ interface IPropsItem {
 }
 
 enum Days {
+    "Sun",
     "Mon",
     "Tue",
     "Wed",
     "Thu",
     "Fri",
-    "Sat",
-    "Sun"
+    "Sat"
 }
 
 class ForecastItem extends React.Component<IPropsItem, {}> {

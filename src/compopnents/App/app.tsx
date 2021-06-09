@@ -24,7 +24,21 @@ class App extends React.Component<{}, IState> {
     }
 
     componentDidMount() {
-        this.getData();
+        navigator.geolocation.getCurrentPosition(async (e) => {
+            const { latitude, longitude } = e.coords;
+
+            api.getCityByCoord(latitude, longitude)
+                .then(res => {
+                    this.city = res.name;
+                    this.setState({
+                        data: res,
+                        isLoad: true
+                    })
+                })
+                .catch(() => this.getData());
+        },
+        () => this.getData());
+
     }
 
     getData() {
@@ -54,9 +68,9 @@ class App extends React.Component<{}, IState> {
                 <Weather data={data} />
                 <ForecastList coord={data.coord} />
 
-                <pre>
+                {/* <pre>
                     {JSON.stringify(this.state.data, undefined, 2)}
-                </pre>
+                </pre> */}
             </>
         )
     }

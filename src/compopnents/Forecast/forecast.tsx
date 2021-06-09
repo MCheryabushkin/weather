@@ -49,15 +49,20 @@ class ForecastList extends React.Component<IPForecastList, ISForecastList> {
     }
 
     renderForecastCards = () => {
-        return this.state.list.daily.map((el: any, iDx: number) => <ForecastItem key={iDx} data={el} />)
+        return this.state.list.daily.map((el: any, iDx: number) => {
+            if (iDx) return <ForecastItem key={iDx} data={el} />;
+        })
     }
 
     render () {
         if (!this.state.isLoad) return false;
         console.log(this.state.list);
         return(
-            <div className={s.forecastList}>
-                { this.renderForecastCards() }
+            <div className={s.forecast}>
+                <h3>Forecast for week:</h3>
+                <div className={s.forecastList}>
+                    { this.renderForecastCards() }
+                </div>
             </div>
         );
     }
